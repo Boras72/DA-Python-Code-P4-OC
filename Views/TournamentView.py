@@ -1,7 +1,7 @@
 #TournamentView
 
 class TournamentView():
-	def __init__(self):  #Nouveau
+	def __init__(self):  
 		pass
 	def create_tournament(self):
 		name = input('Indiquez le nom du tournoi ?')
@@ -10,5 +10,5 @@ class TournamentView():
 		location = input('Quel est le lieu du tournoi ?')
 		return {'name': name, 'start_date': start_date, 'end_date': end_date, 'location': location}
 
-	def display_tournament(self, name, location):          #Pourquoi ?
+	def display_tournament(self, name, location):          
 		print(name, location)
