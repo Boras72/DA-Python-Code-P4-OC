@@ -1,4 +1,4 @@
-# main.py (fichier principal pour initialisez et lancez l'application)
+#main.py (fichier principal pour initialisez et lancez l'application) connecté au MainController qui est le moteur, le main d'oeuvre de ce programme alors que main.py n'est que le déclencheur
 
 from Controllers.MenuController import MainController
 #importer la classe [from nom_dossier.nom_fichier import nom_class]

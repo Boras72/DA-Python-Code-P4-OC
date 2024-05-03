@@ -36,7 +36,7 @@ class MainMenuView:
 
     @staticmethod
     def tournament_menu():
-        print("Que souhaitez vous faire ?")
+        print("Que souhaitez vous faire ?")             #Menu pour la gestion des tournois
         print("1.Créer un Tournoi")
         print("2.Afficher la liste des Tournois")
         print("3.Retour au menu principal")
