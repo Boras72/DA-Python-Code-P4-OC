@@ -9,8 +9,9 @@ class PlayerView:
 		birthdate = input('Quel est votre date de naissance ?')
 		gender = input('Quel est votre genre ?')
 		ranking = input('Quel est votre classement ?')
-		return {'name': name, 'firstname' : firstname, 'birthdate': birthdate, 'id': id, 'ranking': ranking,'gender': gender, }
-
+		#return {'name': name, 'firstname' : firstname, 'birthdate': birthdate, 'id': id, 'ranking': ranking,'gender': gender, }
+		return name, firstname, birthdate, id, ranking, gender
+		
 	def display_player(self, name, age):  
 		print(name, age)
 

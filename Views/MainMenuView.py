@@ -38,7 +38,7 @@ class MainMenuView:
     def tournament_menu():
         print("Que souhaitez vous faire ?")             #Menu pour la gestion des tournois
         print("1.Créer un Tournoi")
-        print("2.Afficher la liste des Tournois")
+        print("2.Gérer un Tournoi")
         print("3.Retour au menu principal")
         print("4.Quitter le programme")
         

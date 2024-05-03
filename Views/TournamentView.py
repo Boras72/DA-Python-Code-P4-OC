@@ -4,11 +4,14 @@ class TournamentView():
 	def __init__(self):  
 		pass
 	def create_tournament(self):
-		name = input('Indiquez le nom du tournoi ?')
-		start_date = input('Indiquez la date de début du tournoi ?')
-		end_date = input('Indiquez la date de fin du tournoi ?')
-		location = input('Quel est le lieu du tournoi ?')
-		return {'name': name, 'start_date': start_date, 'end_date': end_date, 'location': location}
+		name = input('Indiquez le nom du tournoi: ')
+		start_date = input('Indiquez la date de début du tournoi: ')
+		end_date = input('Indiquez la date de fin du tournoi: ')
+		location = input('Indiquer le lieu du tournoi: ')
+		description = input('Veuillez saisir un commentaire: ')
+		#return {'name': name, 'start_date': start_date, 'end_date': end_date, 'location': location}
+		return name, location, start_date, end_date, description
+
 
 	def display_tournament(self, name, location):          
 		print(name, location)

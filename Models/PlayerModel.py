@@ -20,6 +20,9 @@ class PlayerModel:
         player_json={"name": self.name, "firstname": self.firstname, "birthdate": self.birthdate, "id": self.id, "ranking": self.ranking, "gender": self.gender}
         return player_json  
 
+    def save(self):
+        self.player_table.insert(self.gets_player_json())
+
     @classmethod
     def get_all_players(cls):
         players=cls.player_table.all()

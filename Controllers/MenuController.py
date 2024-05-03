@@ -5,11 +5,12 @@ from Models.TournamentModel import TournamentModel
 from Views.TournamentView import TournamentView
 from Controllers.db import save_db,load_db
 from Views.MainMenuView import MainMenuView
-
+from Controllers.TournamentController import TournamentController
 
 class MainController():
 	def __init__(self):
 		self.player_controller=Admin()
+		self.tournament_controller = TournamentController()
 	def start_menu(self):
 		while True :
 			choice = MainMenuView.main_menu()
@@ -20,7 +21,7 @@ class MainController():
 			elif choice == 3:
 				print("gérer les rapports")
 			elif choice == 4:
-				break
+				break					#quitter l'application
 			else:
 				print("Entrer un nombre entre 1 à 4")
 			
@@ -29,7 +30,8 @@ class MainController():
 		choice = MainMenuView.administration()
 		while True :
 			if choice == 1:
-				Admin.create_player()
+				self.player_controller.create_player()
+				self.start_menu()
 			elif choice == 2:
 				"""playerview=PlayerView()  # x(instance)=class(Playerview)
 				id=playerview.modify_player_id()  #y(var)=instance.methode
@@ -52,9 +54,9 @@ class MainController():
 		choice = MainMenuView.tournament_menu()
 		while True :
 			if choice == 1:
-				self.create_tournament()
+				self.tournament_controller.create_tournament()
 			elif choice == 2:
-				self.display_tournament()
+				self.tournament_controller.load_tournament()
 			elif choice == 3:
 				self.start_menu()
 			elif choice == 4:

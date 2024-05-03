@@ -1,0 +1,24 @@
+{
+    "tournament": {
+        "1": {
+            "name": "Paris",
+            "location": "paris",
+            "start_date": "010225",
+            "end_date": "100225",
+            "description": "rien",
+            "players": [],
+            "rounds": [],
+            "id": 1
+        },
+        "2": {
+            "name": "Marseilles",
+            "location": "OM",
+            "start_date": "010125",
+            "end_date": "030125",
+            "description": "Rien",
+            "players": [],
+            "rounds": [],
+            "id": 2
+        }
+    }
+}

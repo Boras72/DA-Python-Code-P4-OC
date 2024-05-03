@@ -8,15 +8,18 @@ from Models.TournamentModel import TournamentModel
 class Admin:            
     def __init__(self):
         pass
-    @staticmethod
-    def create_player():
-        player_view=PlayerView()#definir une instance de la classe player_view
-        user_input=player_view.create_player()
+    
+    def create_player(self):
+        player_view=PlayerView()      #definir une instance de la classe player_view
+        #user_input=player_view.create_player()
+        name, firstname, birthdate, id, ranking, gender = player_view.create_player()
         #Récupération des infos du joueur
-        player=PlayerModel(user_input["name"],user_input["firstname"],user_input["birthdate"],user_input["id"],user_input["ranking"],user_input["gender"])#var player = instance de la classe player model
-        player_json=player.gets_player_json()
-        save_db("players",player_json)
-        return player
+        #player=PlayerModel(user_input["name"],user_input["firstname"],user_input["birthdate"],user_input["id"],user_input["ranking"],user_input["gender"])#var player = instance de la classe player model
+        player = PlayerModel(name, firstname, birthdate, id, ranking, gender)
+        player.save()
+        #player_json=player.gets_player_json()
+        #save_db("players",player_json)
+        #return player
     
     @staticmethod
     def modify_player(player_id, choice):
