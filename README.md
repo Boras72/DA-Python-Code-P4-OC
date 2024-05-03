@@ -2,25 +2,11 @@
 # DA-Python-Code-P4-OC
 Code P4 - Application Jeux d'échecs
 =======
-# Nom ou but du projet - technologies, type de programmation (paradigme)  ou design pattren utilisé
+# Programme de Gestion de tournois d'échecs en Programmation Orientée Objetnologies respectant le design pattern MVC (Model View Controller)
 
-Ce projet vise à créer un/une  ....  (le but de ce programme et les techno utilisées).
+Ce projet vise à développer une application hors ligne, en Python, pour gérer les joueurs et les tournois d'un club d'échecs, en appliquant les principes de la programmation orientée objet et en structurant le code suivant le modèle MVC et qui puisse être  lancé depuis la console (Terminal). 
 
 ## Fonctionnalités
-- **Extraction des données du produit** : Permet de sélectionner une page produit spécifique pour extraire des informations telles que l'URL de la page produit, le code UPC, le titre, les prix (avec et sans taxes), la disponibilité, la description du produit, la catégorie, le classement par étoiles et l'URL de l'image pour les enregistrer dans un fichier CSV.
-- **Collecte de données par catégorie** : Extrait les informations de tous les livres d'une catégorie donnée et les enregistre dans un fichier CSV unique.
-- **Collecte de données globale** : Récupère les informations de tous les livres de toutes les catégories disponibles sur le site et les enregistre dans des fichiers CSV distincts.
-- **Extraction et sauvegarde des images** : Télécharge et enregistre les images de couverture de tous les livres extraites.
-
-## Ex : Processus ETL / POO
-### Extraction/Model
-
-
-### Transformation/Vue
-
-
-### Chargement/Controller
-
 
 
 ## Structure du code
