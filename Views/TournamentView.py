@@ -13,5 +13,14 @@ class TournamentView():
 		return name, location, start_date, end_date, description
 
 
-	def display_tournament(self, name, location):          
-		print(name, location)
+	def display_tournament(self, tournaments):          
+		for tournament in tournaments :
+			print(tournament.id, tournament.name, tournament.location)
+
+	def get_tournament_id(self):
+		choice = input("Entrer l'identifiant du tournoi")
+		return choice
+
+
+
+	

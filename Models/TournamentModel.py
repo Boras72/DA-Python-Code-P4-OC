@@ -5,14 +5,14 @@ from tinydb import where
 class TournamentModel:
     db=TinyDB("data/tournaments.json")
     tournament_table=db.table("tournament")
-    def __init__(self, name, location, start_date, end_date, description):
-        self.id = -1
+    def __init__(self, name, location, start_date, end_date, description, id=-1, players=[], rounds=[]):
+        self.id = id
         self.name = name
         self.location = location
         self.start_date = start_date
         self.end_date = end_date
-        self.players = []
-        self.rounds = []
+        self.players = players
+        self.rounds = rounds
         self.round_number = 4
         self.round_actuel = 0
         self.description = description
@@ -62,7 +62,31 @@ class TournamentModel:
         else: 
             return 1
 
+    @classmethod
+    def get_all_tournament(cls):
+        tournaments = cls.tournament_table.all()
+        tournament_object_list = []
 
+        for tournament in tournaments:
+            tournament_object = cls.tournament_json_to_object(tournament)
+            tournament_object_list.append(tournament_object)
+
+        return tournament_object_list
+
+    @classmethod
+    def tournament_json_to_object(cls, tournament):
+        tournament_object = TournamentModel(**tournament)
+        return tournament_object
+
+    @classmethod
+    def get_tournament_by_id(cls,id):
+        tournament=cls.tournament_table.search(where("id")==int(id))
+        if tournament:
+            return cls.tournament_json_to_object(tournament[0])
+        else:
+            return None
+
+        
                        
 
 

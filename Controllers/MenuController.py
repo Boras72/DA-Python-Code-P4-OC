@@ -57,6 +57,7 @@ class MainController():
 				self.tournament_controller.create_tournament()
 			elif choice == 2:
 				self.tournament_controller.load_tournament()
+				self.start_menu()
 			elif choice == 3:
 				self.start_menu()
 			elif choice == 4:
