@@ -1,6 +1,8 @@
 # Tournament : name, location, start_date, end_date, liste de joueurs, liste de rondes, nb de rondes, description.
 from tinydb import TinyDB, Query
 from tinydb import where
+from .PlayerModel import PlayerModel
+
 
 class TournamentModel:
     db=TinyDB("data/tournaments.json")
@@ -26,6 +28,20 @@ class TournamentModel:
         tournament_id = TournamentModel.gets_tournament_last_id()
         tournament.update({"id":tournament_id})
         self.tournament_table.insert(tournament)
+
+    def update(self):
+        Tournament = Query()
+        tournament = self.gets_tournament_json()
+        self.tournament_table.update(tournament, Tournament.id == self.id)
+
+    def get_players(self):
+        players = []
+        for player_id in self.players:
+            player = PlayerModel.get_player_by_id(player_id)
+            players.append(player)
+        return players
+
+
 
     def create_player_pairs(self, round_actuel):
         if round_actuel == 0:

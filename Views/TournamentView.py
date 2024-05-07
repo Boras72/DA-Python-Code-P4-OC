@@ -21,6 +21,14 @@ class TournamentView():
 		choice = input("Entrer l'identifiant du tournoi")
 		return choice
 
+	def get_players_id(self):
+		players_id = []
+		while len(players_id) < 4:
+			id = input("Entrer l'id du joueur: ")
+			if id not in players_id:
+				players_id.append(id)
+			else:
+				print("Ce joueur a déjà été ajouté")
+		return players_id
+					
 
-
-	

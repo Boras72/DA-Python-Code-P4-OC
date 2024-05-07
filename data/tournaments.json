@@ -16,9 +16,24 @@
             "start_date": "010125",
             "end_date": "030125",
             "description": "Rien",
-            "players": [],
+            "players": [
+                "PK23954",
+                "HG78853",
+                "BD13584",
+                "VB12564"
+            ],
             "rounds": [],
             "id": 2
+        }
+    },
+    "round": {
+        "1": {
+            "name": "Round 1",
+            "tournament_id": 2,
+            "id": 1,
+            "start_time": "2024-05-05 17:36:12.026103",
+            "end_time": null,
+            "matchs": []
         }
     }
 }
