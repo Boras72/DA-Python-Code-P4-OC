@@ -69,18 +69,52 @@ class TournamentController():
         #   - Associer les joueurs
         players = sorted(players, key=lambda player:player.score, reverse=True)  # tri des joueurs
         #associer les joueurs
-        matchs = []
-        round_matchs = []    #rounds des matches actuels
+        tournament_matches = tournament.get_matches()  #matches du tournoi
+        round_matches = []    #rounds des matches actuels
         for player_1 in players:
             for player_2 in players:
                 if player_1.id != player_2.id:
+                    match = ([player_1.id, 0], [player_2.id, 0])
                     #- vérifier que l'un des joueurs n'as pas joué de matchs dans le round en cours
-                    # - vérifier que les 2 joueurs ne se sont pas déjà affrontés dans le tournoi
-                    pass
+                    if not self.chek_if_match_in_round_matches(match, round_matches):
+                        # - vérifier que les 2 joueurs ne se sont pas déjà affrontés dans le tournoi
+                        if not self.chek_if_match_in_tournament_matches(match, tournament_matches):
+                            round_matches.append(match)
         # 4.Ajouter les matches au round
+        round.matches = round_matches
+        round.update()    
         # 5.Ajouter le round au tournoi
+        tournament.add_round(round)
+        tournament.update()
         # 6.Mettre à jour les scores des matches du tour
         
-    
+    def chek_if_match_in_round_matches(self, match, round_matches): 
+        for round_match in round_matches:
+            p1 = match[0][0]  #=player1  [N°liste]  [indexe] NOUVEAUX JOUEURS A METTRE DANS UN MATCH
+            p2 = match[1][0]  #=player 2  (current match)
+            rp1 = round_match[0][0]   #(round match_player)  JOUEURS QUI ONT DEJA JOUES DES MATCHES
+            rp2 = round_match[1][0]
+            # si l'une de ces cond est vérifiée çàd q un joueur a déjà joué un de ces matches
+            if p1 == rp1 or p1 == rp2 or p2 == rp1 or p2 == rp2: 
+                return True
+        return False
+
+    def chek_if_match_in_tournament_matches(self, match, tournament_matches):   
+        for tournament_match in tournament_matches:  #"tournament_matches"=tous les matches qui ont déjà eu lieu
+            # vérifier que les 2 joueurs se sont déjà affrontés dans le tournoi
+            p1 = match[0][0]  #=player1  [N°liste]  [indexe]
+            p2 = match[1][0]  #=player 2  (current match)
+            tp1 = tournament_match[0][0]   #(tournament match_player) MATCHES QUI NE SONT PAS DU ROUND ACTUEL + MATCHES DES ROUNDS PASSES
+            tp2 = tournament_match[1][0]           
+            if (p1 == tp1 and p2 == tp2) or (p1 == tp2 and p2 == tp1):
+                return True
+        return False
+
+
+
+
+
+
+
 
 

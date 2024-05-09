@@ -41,7 +41,15 @@ class TournamentModel:
             players.append(player)
         return players
 
+    def add_round(self, round):
+        self.rounds.append(round.get_round_json())    #liste des rounds contenant tous les rounds
 
+
+    def get_matches(self):
+        matches = []
+        for round in self.rounds:
+            matches.extend(rounds.matches)
+        return matches
 
     def create_player_pairs(self, round_actuel):
         if round_actuel == 0:
