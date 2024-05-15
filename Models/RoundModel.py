@@ -46,6 +46,12 @@ class RoundModel:
     def get_round_by_id(cls,id):
         round=cls.round_table.search(where("id")==int(id))
         if round:
-            return cls.round_json_to_object(round[0])
+            return cls.round_json_to_object(round[0]) #retourne un objet roundModel
         else:
             return None
+
+    @classmethod
+    def round_json_to_object(cls, round):
+        round_object = RoundModel(**round)
+        return round_object
+

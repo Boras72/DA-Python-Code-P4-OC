@@ -7,7 +7,7 @@
             "id": "DS41587",
             "ranking": "1",
             "gender": "m",
-            "score": 0
+            "points": 0
         },
         "2": {
             "name": "Man",
@@ -16,7 +16,7 @@
             "id": "PK23954",
             "ranking": "4",
             "gender": "F",
-            "score": 0
+            "points": 1.0
         },
         "3": {
             "name": "Mar",
@@ -25,7 +25,7 @@
             "id": "EG14656",
             "ranking": "4",
             "gender": "F",
-            "score": 0
+            "points": 0
         },
         "4": {
             "name": "samy",
@@ -34,7 +34,7 @@
             "id": "HG78853",
             "ranking": "2",
             "gender": "m",
-            "score": 0
+            "points": 0
         },
         "5": {
             "name": "Many",
@@ -43,7 +43,7 @@
             "id": "BD13584",
             "ranking": "8",
             "gender": "F",
-            "score": 0
+            "points": 0
         },
         "6": {
             "name": "RAP",
@@ -52,7 +52,7 @@
             "id": "AB12345",
             "ranking": "10",
             "gender": "M",
-            "score": 0
+            "points": 0
         },
         "7": {
             "name": "EMO",
@@ -61,7 +61,16 @@
             "id": "VB12564",
             "ranking": "14",
             "gender": "M",
-            "score": 0
+            "points": 1.0
+        },
+        "8": {
+            "name": "1",
+            "firstname": "2",
+            "birthdate": "11111",
+            "id": "9",
+            "ranking": "25",
+            "gender": "f",
+            "points": 0
         }
     }
 }

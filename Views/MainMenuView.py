@@ -4,9 +4,20 @@ from Views.PlayerView import PlayerView
 from Views.TournamentView import TournamentView
 from Controllers.PlayerController import Admin
 
+
 class MainMenuView:
     def ___init__(self): 
         pass
+
+    @staticmethod
+    def rapport_menu(): 
+        print("Que souhaitez vous faire ?")
+        print("1.Afficher la liste de tous les joueurs par ordre alphabétique")
+        print("2.Afficher la liste de tous les tournois")
+        print("3.Afficher les joueurs d'un tournoi donné")
+        print("4.Affichage de la liste de tous les tours du tournoi et de tous les matches du tour")
+        print("5.Quitter le programme")
+
     @staticmethod
     def main_menu():
         print("Que souhaitez vous faire ?")

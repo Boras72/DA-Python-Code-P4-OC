@@ -20,7 +20,8 @@ class Admin:
         #player_json=player.gets_player_json()
         #save_db("players",player_json)
         #return player
-    
+
+    """
     @staticmethod
     def modify_player(player_id, choice):
         db_players=load_db("players")
@@ -50,7 +51,7 @@ class Admin:
 
         update_player_json=update_player.gets_player_json()
         update_db("players",update_player_json)
-        return update_player
+        return update_player"""
 
     def player_update (self):
         playerview=PlayerView() 
@@ -77,5 +78,7 @@ class Admin:
         players = PlayerModel.get_all_players()
         playerview=PlayerView()
         playerview.display_player_view(players)
+
+        
 
 

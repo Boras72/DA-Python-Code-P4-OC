@@ -5,7 +5,7 @@ from tinydb import where
 class PlayerModel:
     db=TinyDB("data/players.json")
     player_table=db.table("_default")
-    def __init__(self, name, firstname, birthdate, id, ranking, gender, score=0):
+    def __init__(self, name, firstname, birthdate, id, ranking, gender, points=0):
 #les attributs entre parenthèses sont initialisés par l'user
         self.name = name
         self.firstname = firstname
@@ -13,16 +13,24 @@ class PlayerModel:
         self.id = id
         self.ranking = ranking
         self.gender = gender
-        self.score = score   # Points dans le tournoi 
+        self.points = points   # Points dans le tournoi 
         self.play_with = [] #liste des joueurs déjà affrontés 
 
 
     def gets_player_json(self):
-        player_json={"name": self.name, "firstname": self.firstname, "birthdate": self.birthdate, "id": self.id, "ranking": self.ranking, "gender": self.gender, "score": self.score}
+        player_json={"name": self.name, "firstname": self.firstname, "birthdate": self.birthdate, "id": self.id, "ranking": self.ranking, "gender": self.gender, "points": self.points}
         return player_json  
 
     def save(self):
         self.player_table.insert(self.gets_player_json())
+
+
+    def update(self):
+        Player = Query()
+        player = self.gets_player_json()
+        self.player_table.update(player, Player.id == self.id)
+
+
 
     @classmethod
     def get_all_players(cls):
@@ -40,7 +48,6 @@ class PlayerModel:
         Player = Query()
         cls.player_table.update(player, Player.id==player["id"])
         
-
 
     @classmethod
     def get_player_by_id(cls,id):

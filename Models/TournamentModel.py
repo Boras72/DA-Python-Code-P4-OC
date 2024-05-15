@@ -41,6 +41,13 @@ class TournamentModel:
             players.append(player)
         return players
 
+    def last_round_endded(self):  #indique q le round est terminé qd la 'end time' est indiquée (càd q tous les scores doivent être saisis)
+        last_round = self.rounds[-1]
+        if last_round["end_time"]:
+            return True 
+        else:      
+            return False
+
     def add_round(self, round):
         self.rounds.append(round.get_round_json())    #liste des rounds contenant tous les rounds
 
@@ -48,9 +55,10 @@ class TournamentModel:
     def get_matches(self):
         matches = []
         for round in self.rounds:
-            matches.extend(rounds.matches)
+            matches.extend(round["matches"])
         return matches
 
+    """
     def create_player_pairs(self, round_actuel):
         if round_actuel == 0:
             liste_players = sorted(self.players, key=lambda x:(x.score, random.random()))  # sorted= méthode de tri ici aléatoire  (liste trié aléatoire)
@@ -77,7 +85,7 @@ class TournamentModel:
                             i+=2                                            #next(i=i+2)
                             break
         return pairs_players       
-
+    """
     @classmethod
     def gets_tournament_last_id(cls):
         tournaments = cls.tournament_table.all()

@@ -32,3 +32,9 @@ class TournamentView():
 		return players_id
 					
 
+	def get_match_results(self, match):
+		print(match[0][0], "VS", match[1][0])
+		print("Qui a gagné le match ? \n1. Le joueur 1 a gagné \n2. Le joueur 2 a gagné \n3. Le match est nul")
+		choice = input("Entrer votre choix: ")
+		return choice
+		

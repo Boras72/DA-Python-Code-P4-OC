@@ -3,6 +3,7 @@ from Views.TournamentView import TournamentView
 from .PlayerController import Admin
 from Models.RoundModel import RoundModel
 from datetime import datetime
+from Models.PlayerModel import PlayerModel
 
 class TournamentController():
     def __init__(self):
@@ -32,6 +33,8 @@ class TournamentController():
             self.add_tournament_players(tournament)
         elif state_number == 2:
             self.start_round(round_number, tournament)
+        elif state_number == 3:
+            self.add_score(tournament, round_number)
 
     def tournament_state(self, tournament):
         # vérifier si les joueurs sont ajoutés
@@ -44,8 +47,13 @@ class TournamentController():
         # 3. Ajouter les scores d'un tour (N°state + N° tour concerné par les scores)
         
         if tournament.players:
-            if tournament.rounds:
-                pass
+            if tournament.rounds : # si round terminé on passe au tour suivant
+                next_round_number = len(tournament.rounds) + 1   # si tour existe on passe au suivant
+                if tournament.last_round_endded():
+                    return 2, next_round_number          
+                else:
+                    last_round_id = tournament.rounds[-1]["id"]
+                    return 3, last_round_id
             else:
                 return 2, 1
         else:
@@ -67,7 +75,7 @@ class TournamentController():
         # 3.Générer les matches: 
         #   - Trier les joueurs
         #   - Associer les joueurs
-        players = sorted(players, key=lambda player:player.score, reverse=True)  # tri des joueurs
+        players = sorted(players, key=lambda player:player.points, reverse=True)  # tri des joueurs
         #associer les joueurs
         tournament_matches = tournament.get_matches()  #matches du tournoi
         round_matches = []    #rounds des matches actuels
@@ -109,6 +117,41 @@ class TournamentController():
             if (p1 == tp1 and p2 == tp2) or (p1 == tp2 and p2 == tp1):
                 return True
         return False
+
+    def add_score(self, tournament, round_number):
+        # 1. Récupérer le round 
+        round = RoundModel.get_round_by_id(round_number)
+        # 2. Ajouter les scores des matches
+        for match in round.matches:
+            choice = self.tournament_view.get_match_results(match)   #MAJ des résultats
+            p1 = match[0][0]      #=player1  [N°liste = position joueur]  [indexe = victoire]
+            p2 = match[1][0]
+            player_1 = PlayerModel.get_player_by_id(p1)
+            player_2 = PlayerModel.get_player_by_id(p2)
+            if choice == "1":
+                match[0][1] = 1
+                player_1.points = float(player_1.points) + 1
+            elif choice == "2":     # le joueur 2 a gagné
+                match[1][1] = 1
+                player_2.points = float(player_2.points) + 1
+            elif choice == "3":         #MAJ des résultats qd il y a match nul
+                match[0][1] = 0.5
+                match[1][1] = 0.5
+                player_1.points = float(player_1.points) + 0.5
+                player_2.points = float(player_2.points) + 0.5
+            player_1.update()
+            player_2.update()
+
+        
+        # 3. Mettre à jour le round
+        round.end_time = str(datetime.now())
+        round.update()
+
+        # 4. Mettre à jour le tournoi
+        for index, tournament_round in enumerate(tournament.rounds):
+            if tournament_round["id"] == round_number:
+                tournament.rounds[index] = round.get_round_json()
+        tournament.update()
 
 
 

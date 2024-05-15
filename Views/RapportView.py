@@ -1,3 +1,0 @@
-# Rapportview
-
-class RapportView
