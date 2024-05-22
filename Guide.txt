@@ -1,0 +1,20 @@
+-création des joueurs # TERMINÉ
+-récupération des joueurs # TERMINÉ
+- modification des joueurs # TERMINÉ
+-
+
+
+
+-création d'un tournoi : # TERMINÉ
+- gestion d'un tournoi : # EN COURS
+    - ajout de joueurs : # TERMINÉ
+    - création des tours: TERMINÉ
+    - ajout des scores, matchs, tours : TERMINÉ
+
+
+- rapports :
+    - afficher les résultats
+
+# TERMINER
+# EN COURS
+# A FAIRE

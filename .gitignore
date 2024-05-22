@@ -1,1 +1,3 @@
-Fichiers à ignorer dans le versioning du projet :
+# Fichiers à ignorer dans le versioning du projet :
+venv
+__pycache__/
