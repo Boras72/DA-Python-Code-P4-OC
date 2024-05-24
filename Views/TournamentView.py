@@ -18,11 +18,11 @@ class TournamentView:
 
     def display_tournament(self, tournaments):
         table = Table(title="Liste des tournois")
-        table.add_column("Id", style="cyan", no_wrap=True)
+        table.add_column("Id", style="white", no_wrap=True)
         table.add_column("Name", style="magenta")
-        table.add_column("Location", justify="right", style="green")
-        table.add_column("Start date", justify="right", style="green")
-        table.add_column("End date", justify="right", style="green")
+        table.add_column("Location", justify="right", style="cyan")
+        table.add_column("Start date", justify="right", style="blue")
+        table.add_column("End date", justify="right", style="blue")
         table.add_column("Description", justify="right", style="green")
 
         for tournament in tournaments:
@@ -42,11 +42,11 @@ class TournamentView:
         console = Console()
         for round in rounds:
             table = Table(title=f"{round.name}")
-            table.add_column("Id", style="cyan", no_wrap=True)
-            table.add_column("Name", style="cyan", no_wrap=True)
-            table.add_column("Start time", style="cyan", no_wrap=True)
-            table.add_column("End time", style="cyan", no_wrap=True)
-            table.add_column("Status", style="cyan", no_wrap=True)
+            table.add_column("Id", style="white", no_wrap=True)
+            table.add_column("Name", style="magenta", no_wrap=True)
+            table.add_column("Start time", style="blue", no_wrap=True)
+            table.add_column("End time", style="blue", no_wrap=True)
+            table.add_column("Status", style="green", no_wrap=True)
 
             status = "terminé" if round.end_time else "en cours"
 
@@ -54,11 +54,11 @@ class TournamentView:
 
             console.print(table)
             table = Table(title=f"Liste des matches du {round.name}")
-            table.add_column("Player1", style="cyan", no_wrap=True)
+            table.add_column("Player1", style="magenta", no_wrap=True)
             table.add_column("Score P1", style="cyan", no_wrap=True)
-            table.add_column("Vs.", style="cyan", no_wrap=True)
+            table.add_column("Vs.", style="blue", no_wrap=True)
             table.add_column("Score P2", style="cyan", no_wrap=True)
-            table.add_column("Player2", style="cyan", no_wrap=True)
+            table.add_column("Player2", style="magenta", no_wrap=True)
 
             for match in round.matches:
                 table.add_row(match[0][0], str(match[0][1]), "Vs", str(match[1][1]), match[1][0])

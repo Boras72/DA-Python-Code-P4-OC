@@ -19,6 +19,7 @@ class Admin:
 
     def player_update(self):
         playerview = PlayerView()
+        self.display_players()
         id = playerview.modify_player_id()
         # choice=playerview.modify_player_information(id)
         # Admin.modify_player(id, choice)

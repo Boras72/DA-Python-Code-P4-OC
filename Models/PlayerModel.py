@@ -41,7 +41,7 @@ class PlayerModel:
     @classmethod
     def get_all_players(cls):
         players = cls.player_table.all()
-        player = sorted(players, key=lambda x: (x["name"], x["firstname"]))  # tri des joueurs par ordre alphabétique
+        players = sorted(players, key=lambda x: (x["name"], x["firstname"]))  # tri des joueurs par ordre alphabétique
         player_object = []
         for player in players:
             player_object.append(PlayerModel(**player))

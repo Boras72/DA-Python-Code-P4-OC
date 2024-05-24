@@ -11,7 +11,6 @@ class TournamentController:
         self.tournament_view = TournamentView()
 
     def create_tournament(self):
-
         name, location, start_date, end_date, description = self.tournament_view.create_tournament()
         tournament = TournamentModel(name, location, start_date, end_date, description)
         tournament.save()
@@ -35,6 +34,8 @@ class TournamentController:
             self.start_round(round_number, tournament)
         elif state_number == 3:
             self.add_score(tournament, round_number)
+        elif state_number == -1:
+            print("Tournoi terminé")
 
     def tournament_state(self, tournament):
         # vérifier si les joueurs sont ajoutés
@@ -50,7 +51,10 @@ class TournamentController:
             if tournament.rounds:  # si round terminé on passe au tour suivant
                 next_round_number = len(tournament.rounds) + 1  # si tour existe on passe au suivant
                 if tournament.last_round_endded():
-                    return 2, next_round_number
+                    if next_round_number <= 4 :
+                        return 2, next_round_number
+                    else:
+                        return -1, 0  #Tournoi terminé
                 else:
                     last_round_id = tournament.rounds[-1]["id"]
                     return 3, last_round_id
@@ -101,7 +105,7 @@ class TournamentController:
             p2 = match[1][0]  # =player 2  (current match)
             rp1 = round_match[0][0]  # (round match_player)  JOUEURS QUI ONT DEJA JOUES DES MATCHES
             rp2 = round_match[1][0]
-            # si l'une de ces cond est vérifiée çàd q un joueur a déjà joué un de ces matches
+            # si l'une de ces cond° est vérifiée çàd qu' un joueur a déjà joué un de ces matches
             if p1 == rp1 or p1 == rp2 or p2 == rp1 or p2 == rp2:
                 return True
         return False

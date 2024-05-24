@@ -51,9 +51,7 @@ class TournamentModel:
             players.append(player)
         return players
 
-    def last_round_endded(
-        self,
-    ):  # indique q le round est terminé qd la 'end time' est indiquée (càd q tous les scores doivent être saisis)
+    def last_round_endded(self):  # indique q le round est terminé qd la 'end time' est indiquée (càd q tous les scores doivent être saisis)
         last_round = self.rounds[-1]
         if last_round["end_time"]:
             return True

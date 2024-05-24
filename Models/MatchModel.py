@@ -17,5 +17,3 @@ class MatchModel:
 
 # action=méthode / info=attribut
 # lier des actions=models
-
-# créer une méthode pour stocker le résultat sous forme d'un tuple co....

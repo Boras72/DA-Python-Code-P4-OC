@@ -38,11 +38,11 @@ class PlayerView:
 
         table = Table(title="Liste des joueurs")
 
-        table.add_column("Id", style="cyan", no_wrap=True)
+        table.add_column("Id", style="white", no_wrap=True)
         table.add_column("Name", style="magenta")
-        table.add_column("Firstname", justify="right", style="green")
-        table.add_column("Birthdate", justify="right", style="green")
-        table.add_column("Ranking", justify="right", style="green")
+        table.add_column("Firstname", justify="right", style="cyan")
+        table.add_column("Birthdate", justify="right", style="blue")
+        table.add_column("Ranking", justify="right", style="red")
         table.add_column("Gender", justify="right", style="green")
 
         for player in players:
