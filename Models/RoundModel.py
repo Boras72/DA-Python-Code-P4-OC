@@ -32,7 +32,6 @@ class RoundModel:
     def update(self):
         Round = Query()
         round = self.get_round_json()
-        print(round)
         self.round_table.update(round, Round.id == self.id)
 
     def save(self):

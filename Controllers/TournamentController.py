@@ -4,6 +4,7 @@ from .PlayerController import Admin
 from Models.RoundModel import RoundModel
 from datetime import datetime
 from Models.PlayerModel import PlayerModel
+from config import MAX_ROUND_NUMBER
 
 
 class TournamentController:
@@ -14,6 +15,9 @@ class TournamentController:
         name, location, start_date, end_date, description = self.tournament_view.create_tournament()
         tournament = TournamentModel(name, location, start_date, end_date, description)
         tournament.save()
+        choice = self.tournament_view.next_step(1)
+        if choice == "1":
+            self.add_tournament_players(tournament)
 
     def play_tournament(self, tournament, new_tournament):
         while True:
@@ -29,11 +33,17 @@ class TournamentController:
         state_number, round_number = self.tournament_state(tournament)
 
         if state_number == 1:  # Un tournoi peut se trouver dans 3 états
-            self.add_tournament_players(tournament)
+            choice = self.tournament_view.next_step(1)
+            if choice == "1":
+                self.add_tournament_players(tournament)
         elif state_number == 2:
-            self.start_round(round_number, tournament)
+            choice = self.tournament_view.next_step(state_number, round_number)
+            if choice == "1":
+                self.start_round(round_number, tournament)
         elif state_number == 3:
-            self.add_score(tournament, round_number)
+            choice = self.tournament_view.next_step(state_number, round_number)
+            if choice == "1":
+                self.add_score(tournament, round_number)
         elif state_number == -1:
             print("Tournoi terminé")
 
@@ -51,10 +61,10 @@ class TournamentController:
             if tournament.rounds:  # si round terminé on passe au tour suivant
                 next_round_number = len(tournament.rounds) + 1  # si tour existe on passe au suivant
                 if tournament.last_round_endded():
-                    if next_round_number <= 4 :
+                    if next_round_number <= MAX_ROUND_NUMBER:
                         return 2, next_round_number
                     else:
-                        return -1, 0  #Tournoi terminé
+                        return -1, 0  # Tournoi terminé
                 else:
                     last_round_id = tournament.rounds[-1]["id"]
                     return 3, last_round_id
@@ -68,6 +78,9 @@ class TournamentController:
         player_id = self.tournament_view.get_players_id()
         tournament.players = player_id
         tournament.update()
+        choice = self.tournament_view.next_step(2)
+        if choice == "1":
+            self.start_round(1, tournament)
 
     def start_round(self, round_number, tournament):
         # 1.Récupérer les joueurs du tournoi
@@ -98,6 +111,10 @@ class TournamentController:
         tournament.add_round(round)
         tournament.update()
         # 6.Mettre à jour les scores des matches du tour
+        self.tournament_view.prepare_round()
+        choice = self.tournament_view.next_step(3, round_number)
+        if choice == "1":
+            self.add_score(tournament, round.id)
 
     def chek_if_match_in_round_matches(self, match, round_matches):
         for round_match in round_matches:
@@ -156,3 +173,9 @@ class TournamentController:
             if tournament_round["id"] == round_number:
                 tournament.rounds[index] = round.get_round_json()
         tournament.update()
+        if round_number >= MAX_ROUND_NUMBER:
+            print("Tournoi Terminé")
+        else:
+            choice = self.tournament_view.next_step(2, round_number + 1)
+            if choice == "1":
+                self.start_round(round_number + 1, tournament)

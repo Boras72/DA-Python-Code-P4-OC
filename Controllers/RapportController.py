@@ -10,7 +10,7 @@ class RapportController:
         self.player_view = PlayerView()
         self.tournament_view = TournamentView()
 
-    def display_player(self):               # Liste de tous les joueurs
+    def display_player(self):  # Liste de tous les joueurs
         players = PlayerModel.get_all_players()
         self.player_view.display_player_view(players)
 

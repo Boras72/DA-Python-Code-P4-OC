@@ -37,6 +37,7 @@ class TournamentModel:
         tournament = self.gets_tournament_json()
         tournament_id = TournamentModel.gets_tournament_last_id()
         tournament.update({"id": tournament_id})
+        self.id = tournament_id
         self.tournament_table.insert(tournament)
 
     def update(self):
@@ -51,7 +52,9 @@ class TournamentModel:
             players.append(player)
         return players
 
-    def last_round_endded(self):  # indique q le round est terminé qd la 'end time' est indiquée (càd q tous les scores doivent être saisis)
+    def last_round_endded(
+        self,
+    ):  # indique q le round est terminé qd la 'end time' est indiquée (càd q tous les scores doivent être saisis)
         last_round = self.rounds[-1]
         if last_round["end_time"]:
             return True

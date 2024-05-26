@@ -1,4 +1,4 @@
-from Controllers.PlayerController import Admin   #from Dossier.fichier import Classe
+from Controllers.PlayerController import Admin  # from Dossier.fichier import Classe
 from Views.MainMenuView import MainMenuView
 from Controllers.TournamentController import TournamentController
 from Controllers.RapportController import RapportController
@@ -12,7 +12,7 @@ class MainController:
 
     def start_menu(self):
         while True:
-            choice = MainMenuView.main_menu() #Appel, par   la var 'choice' de la méthode statique 'main.menu' via la classe 'MainMenuView' ? Appel de la méthode de classe 'MainMenuView' via sa propre classe elle-même
+            choice = (MainMenuView.main_menu())
             if choice == 1:
                 self.start_menu_player()
             elif choice == 2:
@@ -25,8 +25,8 @@ class MainController:
                 print("Entrer un nombre entre 1 à 4")
 
     def start_menu_player(self):
-        choice = MainMenuView.administration()          #Pkoi var = class.method ?
-        while True:                                 #Pkoi while True ?
+        choice = MainMenuView.administration()  # Pkoi var = class.method ?
+        while True:  # Pkoi while True ?
             if choice == 1:
                 self.player_controller.create_player()
                 self.start_menu()
@@ -76,7 +76,7 @@ class MainController:
                 self.rapport_manager()
             elif choice == 5:
                 self.start_menu()
-            elif choice == 6:   
+            elif choice == 6:
                 exit()
             else:
                 print("Entrer un nombre entre 1 à 6")

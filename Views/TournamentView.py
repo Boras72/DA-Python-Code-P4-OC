@@ -1,6 +1,8 @@
 # TournamentView
 from rich.console import Console
 from rich.table import Table
+from time import sleep
+from config import MAX_PLAYER_NUMBER
 
 
 class TournamentView:
@@ -70,10 +72,12 @@ class TournamentView:
 
     def get_players_id(self):
         players_id = []
-        while len(players_id) < 8:
-            id = input("Entrer l'id du joueur: ")
+        counter = 1
+        while len(players_id) < MAX_PLAYER_NUMBER:
+            id = input(f"Entrer l'id du joueur {counter}/{MAX_PLAYER_NUMBER}: ")
             if id not in players_id:
                 players_id.append(id)
+                counter += 1
             else:
                 print("Ce joueur a déjà été ajouté")
         return players_id
@@ -83,3 +87,40 @@ class TournamentView:
         print("Qui a gagné le match ? \n1. Le joueur 1 a gagné \n2. Le joueur 2 a gagné \n3. Le match est nul")
         choice = input("Entrer votre choix: ")
         return choice
+
+    def next_step(self, state_number, round_number=1):
+        console = Console()
+        if state_number == 1:
+            console.print("Le tournoi a été créé avec succès", style="green")
+            print("Souhaitez-vous ajouter des joueurs au tournoi ?")
+
+        elif state_number == 2 and round_number == 1:
+            console.print("Les joueurs ont bien été ajoutés au tournoi", style="green")
+            print("Souhaitez-vous démarrer le premier round ?")
+
+        elif state_number == 2 and round_number != 1:
+            console.print(f"Le round {round_number-1} est terminé", style="green")
+            print(f"Souhaitez-vous démarrer le round {round_number} ?")
+
+        elif state_number == 3:
+            console.print(f"Les matches du round {round_number} sont terminés", style="green")
+            print("Souhaitez-vous saisir les scores ?")
+
+        choice = input("1. OUI | 2. NON: ")
+        return choice
+
+    def prepare_round(self):
+        console = Console()
+
+        data = [
+            "Sélection des joueurs",
+            "Création des matches",
+            "Déroulement des matches",
+            "Les matches sont terminés!",
+        ]
+        # with console.status("[bold green]Round en cours...") as status:
+        while data:
+            text = data.pop(0)
+            sleep(1)
+            console.log(f"[green]{text}[/green]")
+            console.log("[bold][red]Round terminé!")
