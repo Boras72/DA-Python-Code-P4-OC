@@ -100,12 +100,13 @@ Vous pouvez afficher divers rapports sur les joueurs et les tournois en sélecti
 Le programme sauvegarde automatiquement les données dans des fichiers JSON après chaque modification. Les fichiers JSON sont situés dans le répertoire data/. Lors du démarrage, le programme charge les données à partir de ces fichiers pour restaurer son état précédent.
 
 ## Conformité au PEP 8
-Le code source est formaté selon les directives PEP 8. Utilisez flake8 pour vérifier la conformité :
+Le code source est formaté selon les directives PEP 8. 
+Pour générer un rapport flake8-html afin de vérifier la conformité au PEP8, saisissez la commande suivante :
 
 ```sh
-flake8 --max-line-length=119 --format=html --htmldir=flake8_rapport
+flake8 --max-line-length=119 --format=html --htmldir=flake_report
 ```
-Le répertoire flake8_rapport contiendra un rapport HTML détaillant les éventuelles violations des directives PEP 8.
+Le répertoire flake-report contiendra un rapport HTML détaillant les éventuelles violations des directives PEP 8.
 
 ## Contribution
 Pour contribuer au projet, veuillez 'forker' le dépôt, créer une branche de fonctionnalités, puis soumettre une pull request pour examen.
