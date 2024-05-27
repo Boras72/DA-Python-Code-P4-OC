@@ -19,9 +19,9 @@ Avant de pouvoir exécuter le programme, assurez-vous d'avoir installé Python 3
 2. Naviguez dans le répertoire du projet.
 3. Installez les dépendances en utilisant pip :
 
-   ```sh
-   pip install -r requirements.txt
-
+```sh
+pip install -r requirements.txt
+```
 
 ## Structure du Projet
 Le projet suit le modèle de conception MVC (Modèle-Vue-Contrôleur) et est organisé comme suit :
@@ -119,6 +119,3 @@ Ce projet est sous licence RIFFI Ltd.
 
 ## Contact
 Pour toute question ou suggestion, n'hésitez pas à ouvrir un problème ("Issue") dans le dépôt GitHub du projet.
-
-
->>>>>>> 6f1b2a1 (ajout des fichiers README gitignore et requirements)
