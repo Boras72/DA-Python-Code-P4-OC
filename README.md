@@ -101,7 +101,7 @@ Le programme sauvegarde automatiquement les données dans des fichiers JSON apr�
 
 ## Conformité au PEP 8
 Le code source est formaté selon les directives PEP 8. 
-Pour générer un rapport flake8-html afin de vérifier la conformité au PEP8, saisissez la commande suivante :
+Pour générer un rapport flake8-html afin de vérifier la conformité au PEP8 selon les directives du projet, saisissez la commande suivante :
 
 ```sh
 flake8 --max-line-length=119 --format=html --htmldir=flake_report
