@@ -37,10 +37,6 @@ Le projet suit le modèle de conception MVC (Modèle-Vue-Contrôleur) et est org
 
 ## Utilisation
 
-## Prérequis
-
-Avant de commencer à utiliser ce projet, vous devez avoir installé Python sur votre système. Ce projet a été testé avec Python 3.x.
-
 ## Configuration de l'environnement
 
 Il est recommandé d'utiliser un environnement virtuel pour exécuter ce projet afin de gérer les dépendances de manière isolée. Pour configurer et activer un environnement virtuel, suivez ces étapes :
@@ -107,6 +103,18 @@ Pour générer un rapport flake8-html afin de vérifier la conformité au PEP8 s
 flake8 --max-line-length=119 --format=html --htmldir=flake_report
 ```
 Le répertoire flake-report contiendra un rapport HTML détaillant les éventuelles violations des directives PEP 8.
+
+## Consultation des docstrings
+Les docstrings sont accessibles et utilisables via la fonction help(), il suffit de passer la fonction, la classe ou le module en argument :
+
+```python
+# Utilisation de help()
+help(ma_méthode)
+help(MaClasse)
+```
+Les docstrings sont une pratique essentielle pour rendre le code plus lisible et maintenable, en fournissant des informations précieuses sur la compréhension et l'utilisation du code.
+
+
 
 ## Contribution
 Pour contribuer au projet, veuillez 'forker' le dépôt, créer une branche de fonctionnalités, puis soumettre une pull request pour examen.
