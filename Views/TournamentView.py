@@ -6,16 +6,32 @@ from config import MAX_PLAYER_NUMBER
 
 
 class TournamentView:
+    """
+    Gère l'affichage et les interactions avec l'utilisateur pour le tournoi.
+    """
     def __init__(self):
         pass
-
+        
     def create_tournament(self):
+        """
+        Création d'un tournoi.
+        
+        Args:
+            name (str) : nom du joueur.
+            location (str) : lieu du tournoi
+            start_date (datetime.date) : date de début.
+            end_date (datetime.date) : date de fin.
+            description (str) : commentaire.
+            
+        Returns:
+            str: Informations d'un tournoi.
+        """
+        
         name = input("Indiquez le nom du tournoi: ")
         start_date = input("Indiquez la date de début du tournoi: ")
         end_date = input("Indiquez la date de fin du tournoi: ")
         location = input("Indiquer le lieu du tournoi: ")
         description = input("Veuillez saisir un commentaire: ")
-        # return {'name': name, 'start_date': start_date, 'end_date': end_date, 'location': location}
         return name, location, start_date, end_date, description
 
     def display_tournament(self, tournaments):
@@ -118,7 +134,6 @@ class TournamentView:
             "Déroulement des matches",
             "Les matches sont terminés!",
         ]
-        # with console.status("[bold green]Round en cours...") as status:
         while data:
             text = data.pop(0)
             sleep(1)

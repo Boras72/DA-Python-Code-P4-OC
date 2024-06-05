@@ -1,6 +1,4 @@
-# main.py (fichier principal pour initialiser et lancer l'application) connecté
-# au MainController qui est le moteur, le main d'oeuvre,
-# le mécanisme principal de ce programme alors que main.py n'est que le déclencheur
+# main.py (fichier principal pour initialiser et lancer l'application) :
 
 from Controllers.MenuController import MainController
 
@@ -8,5 +6,7 @@ from Controllers.MenuController import MainController
 
 if __name__ == "__main__":
     MainController().start_menu()
-    # On appelle la fonction start_menu de la classe MainController
-    # qui elle-même va exécuter la fonction mainmenu dans la classe Mainmenuview
+    """
+    Appel de la fonction start_menu de la classe MainController (import MainController)
+    qui va exécuter elle-même la fonction Mainmenu dans la classe Mainmenuview
+    """

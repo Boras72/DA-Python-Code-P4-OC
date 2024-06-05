@@ -1,4 +1,4 @@
-# Match : players, result.
+# MatchModel
 
 
 class MatchModel:
@@ -8,12 +8,8 @@ class MatchModel:
         self.player2 = player2
         self.result = None
 
-    def set_result(self, result):  # changer résultat
+    def set_result(self, result):  # change le résultat
         self.result = result
 
-    def get_result(self):  # retourner le résultat
+    def get_result(self):  # retourne le résultat
         return self.result
-
-
-# action=méthode / info=attribut
-# lier des actions=models

@@ -1,4 +1,5 @@
-# Tournament : name, location, start_date, end_date, liste de joueurs, liste de rondes, nb de rondes, description.
+# TournamentModel
+
 from tinydb import TinyDB, Query
 from tinydb import where
 from .PlayerModel import PlayerModel
@@ -7,8 +8,21 @@ from .PlayerModel import PlayerModel
 class TournamentModel:
     db = TinyDB("data/tournaments.json")
     tournament_table = db.table("tournament")
-
+    """ Gère les données des tournois"""
+    
     def __init__(self, name, location, start_date, end_date, description, id=-1, players=[], rounds=[]):
+        """
+        Args :
+            name (str) : nom du joueur
+            location (str) : lieu du tournoi
+            start_date (datetime.date) : date de début
+            end_date (datetime.date) : date de fin
+            description (str) : commentaire
+            
+        Returns :  Renvoie les informations d'un tournoi
+        
+        """
+
         self.id = id
         self.name = name
         self.location = location
@@ -54,7 +68,8 @@ class TournamentModel:
 
     def last_round_endded(
         self,
-    ):  # indique q le round est terminé qd la 'end time' est indiquée (càd q tous les scores doivent être saisis)
+    ):
+        # Cette méthode indique l'heure de fin d'un round 'end time' (càd quand les scores doivent être saisis)
         last_round = self.rounds[-1]
         if last_round["end_time"]:
             return True
@@ -62,7 +77,8 @@ class TournamentModel:
             return False
 
     def add_round(self, round):
-        self.rounds.append(round.get_round_json())  # liste des rounds contenant tous les rounds
+        # liste des rounds contenant tous les rounds
+        self.rounds.append(round.get_round_json())
 
     def get_matches(self):
         matches = []
@@ -101,12 +117,3 @@ class TournamentModel:
             return cls.tournament_json_to_object(tournament[0])
         else:
             return None
-
-
-# L'attribut round_number de la classe Tournament représente
-# le numéro du tour actuel du tournoi.
-# Il est initialisé à 0 lorsqu'un nouveau tournoi est créé. Au fur et à mesure
-# que les tours sont joués,
-# l'attribut round_number est incrémenté pour garder une trace du tour en cours.
-# Cet attribut est utilisé pour déterminer quel tour de matchs jouer ensuite
-# et pour générer des appariements pour les tours à venir.

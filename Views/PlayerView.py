@@ -1,16 +1,21 @@
 # PlayerView
 from rich.console import Console
 from rich.table import Table
+import re
 
 
 class PlayerView:
     def create_player(self):
-        name = input("Quel est votre nom ?")
-        firstname = input("Quel est votre prénom ?")
-        id = input("Quel est votre id ?")
-        birthdate = input("Quel est votre date de naissance ?")
-        gender = input("Quel est votre genre ?")
-        ranking = input("Quel est votre classement ?")
+        name = input("Quel est votre nom ? ")
+        firstname = input("Quel est votre prénom ? ")
+        id = input("Quel est votre id ? ")
+        birthdate = input("Quel est votre date de naissance (JJ/MM/AAAA) ? ")
+        regex_date = r"\b(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}\b"
+        while not re.match(regex_date, birthdate):
+            print("Format de la date incorrecte")
+            birthdate = input("Quel est votre date de naissance (JJ/MM/AAAA) ? ")
+        gender = input("Quel est votre genre ? ")
+        ranking = input("Quel est votre classement ? ")
         return name, firstname, birthdate, id, ranking, gender
 
     def display_player(self, name, age):
@@ -34,7 +39,6 @@ class PlayerView:
         return name, firstname, birthdate, ranking, gender
 
     def display_player_view(self, players):
-        # print("La liste des joueurs")
 
         table = Table(title="Liste des joueurs")
 

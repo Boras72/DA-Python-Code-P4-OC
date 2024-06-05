@@ -1,4 +1,4 @@
-# Player : name, firstname, birthdate, id, ranking, gender
+# PlayerModel
 from tinydb import TinyDB, Query
 from tinydb import where
 
@@ -16,7 +16,7 @@ class PlayerModel:
         self.ranking = ranking
         self.gender = gender
         self.points = points  # Points dans le tournoi
-        self.play_with = []  # liste des joueurs déjà affrontés
+        self.play_with = []  # liste des joueurs qui se sont déjà affrontés
 
     def gets_player_json(self):
         player_json = {
@@ -41,7 +41,9 @@ class PlayerModel:
     @classmethod
     def get_all_players(cls):
         players = cls.player_table.all()
-        players = sorted(players, key=lambda x: (x["name"], x["firstname"]))  # tri des joueurs par ordre alphabétique
+        players = sorted(
+            players, key=lambda x: (x["name"], x["firstname"])
+        )  # Pour trier les joueurs par ordre alphabétique
         player_object = []
         for player in players:
             player_object.append(PlayerModel(**player))

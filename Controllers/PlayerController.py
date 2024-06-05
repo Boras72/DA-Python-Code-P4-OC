@@ -1,3 +1,4 @@
+# PlayerController
 from Models.PlayerModel import PlayerModel
 from Views.PlayerView import PlayerView
 
@@ -7,22 +8,19 @@ class Admin:
         pass
 
     def create_player(self):
-        player_view = PlayerView()  # definir une instance de la classe player_view
-        # user_input=player_view.create_player()
+        # definir une instance de la vue
+        player_view = PlayerView()
+        # récupération des infos du joueur à la vue
         name, firstname, birthdate, id, ranking, gender = player_view.create_player()
-        # Récupération des infos du joueur
+        # Renvoyez/Passez les infos du joueur au Model
         player = PlayerModel(name, firstname, birthdate, id, ranking, gender)
+        # Sauvegarder le joueur grâce au Model
         player.save()
-        # player_json=player.gets_player_json()
-        # save_db("players",player_json)
-        # return player
 
     def player_update(self):
         playerview = PlayerView()
         self.display_players()
         id = playerview.modify_player_id()
-        # choice=playerview.modify_player_information(id)
-        # Admin.modify_player(id, choice)
         player = PlayerModel.get_player_by_id(id)
         name, firstname, birthdate, ranking, gender = playerview.player_update_view(player)
         player.name = name

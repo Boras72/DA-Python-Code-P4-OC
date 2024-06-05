@@ -1,4 +1,5 @@
-from Controllers.PlayerController import Admin  # from Dossier.fichier import Classe
+# MenuController
+from Controllers.PlayerController import Admin
 from Views.MainMenuView import MainMenuView
 from Controllers.TournamentController import TournamentController
 from Controllers.RapportController import RapportController
@@ -6,13 +7,13 @@ from Controllers.RapportController import RapportController
 
 class MainController:
     def __init__(self):
-        self.player_controller = Admin()  # Pkoi pas : self.player_controller = player_controller ?
+        self.player_controller = Admin()
         self.tournament_controller = TournamentController()
         self.rapport_controller = RapportController()
 
     def start_menu(self):
         while True:
-            choice = (MainMenuView.main_menu())
+            choice = MainMenuView.main_menu()
             if choice == 1:
                 self.start_menu_player()
             elif choice == 2:
@@ -25,8 +26,8 @@ class MainController:
                 print("Entrer un nombre entre 1 à 4")
 
     def start_menu_player(self):
-        choice = MainMenuView.administration()  # Pkoi var = class.method ?
-        while True:  # Pkoi while True ?
+        choice = MainMenuView.administration()
+        while True:
             if choice == 1:
                 self.player_controller.create_player()
                 self.start_menu()

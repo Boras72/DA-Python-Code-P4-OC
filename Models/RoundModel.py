@@ -1,4 +1,4 @@
-# Round : contenant plusieurs matchs.
+# RoundModel
 from tinydb import TinyDB, Query
 from tinydb import where
 
@@ -51,9 +51,10 @@ class RoundModel:
 
     @classmethod
     def get_round_by_id(cls, id):
+        # méthode permettant de retourner un objet roundModel
         round = cls.round_table.search(where("id") == int(id))
         if round:
-            return cls.round_json_to_object(round[0])  # retourne un objet roundModel
+            return cls.round_json_to_object(round[0])
         else:
             return None
 

@@ -1,3 +1,4 @@
+# TournamentController
 from Models.TournamentModel import TournamentModel
 from Views.TournamentView import TournamentView
 from .PlayerController import Admin
@@ -21,7 +22,7 @@ class TournamentController:
 
     def play_tournament(self, tournament, new_tournament):
         while True:
-            nb_round = tournament.round_number  # "tournament"= instance (on nomme l'instance comme on veut)
+            nb_round = tournament.round_number  # "tournament"= instance
             for i in range(nb_round):
                 pass
 
